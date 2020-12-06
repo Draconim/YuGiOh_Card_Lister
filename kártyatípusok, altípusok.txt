@@ -1,0 +1,21 @@
+Szörny
+	Normal
+	Effect
+	Synchro
+	Xyz
+	Link
+
+
+Varázs
+	Nomral
+	Quick play
+	Continous
+	Field
+	Equip
+	Ritual
+
+
+Csapda
+	Normal
+	Continous
+	Conter
