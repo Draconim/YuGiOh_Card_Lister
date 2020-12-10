@@ -15,14 +15,22 @@ Szörny
 
 Varázs
 	Nomral
+		Szimpla varázslapok, csak saját "main phase"-ben lehet őket aktiválni.
 	Quick play
+		Bármelyik játékos körében aktiválhatóak, kivéve abban a körben, melyben lefordítva le lett rakva a mezőre.
 	Continous
+		Aktiválás után a mezőn marad, így effektjét/effektjeit többször is lehet használni.
 	Field
+		Mezőlap, aktiválás után szintén a mezőn marad.
 	Equip
+		Varázslap, melyet csatolni kell egy szörnyhöz, hogy az effektjét aktiválhassuk.
 	Ritual
-
+		Varázslap, melynek aktiválásával meg lehet idézni egy ritual szörnyet.
 
 Csapda
 	Normal
+		Mezőre lefordítva, csak az tán lehet aktiválni, hogy a körnek vége lett.
 	Continous
-	Conter
+		Aktiválás után is a mezőn marad, effektjeit többször lehet használni.
+	Counter
+		Csak egy másik csapdalap aktiválásakor lehet aktiválni.
