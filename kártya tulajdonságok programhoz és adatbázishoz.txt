@@ -1,0 +1,26 @@
+Kártya:
+	> Kártya azonosító (String, formátum: XXXX-EN012)
+	> Név (String)
+	> Leírás (String)
+
+Szörny:
+	Normal:
+		> (Pendulum) szint
+		> Attribútum (Enum: Fény, Sötétség, Föld, Víz, Szél, Tűz, Divine-Beast)
+		> Típus (Enum:25+)
+		> Támadó érték (Egész: Min:0, Max:10000)
+		> Védekező érték (Egész: Min:0, Max:10000)
+	Effect:
+		+ Effect (leírásba kerül)
+	Synchro: nincs változás
+	Xyz: nincs változás
+	Link:
+		- Védekező érték
+		- (Pendulum) szint
+		+ Link szint (Byte: 1-4)
+	Ritual: nincs változás
+
+Varázs:
+	+ VarázsTípus (Enum:Normal, Quick Play, Continous, Field, Equip, Ritual)
+Csapda:
+	+ Csapdatípus (Enum: Normal, Continous, Counter)
