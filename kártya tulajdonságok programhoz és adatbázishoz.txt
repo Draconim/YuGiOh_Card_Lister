@@ -24,3 +24,30 @@ Varázs:
 	+ VarázsTípus (Enum:Normal, Quick Play, Continous, Field, Equip, Ritual)
 Csapda:
 	+ Csapdatípus (Enum: Normal, Continous, Counter)
+
+Adatbázishoz:
+
+Szörny:
+	> Kártya azonosító (String, formátum: XXXX-EN012, elsődleges kulcs)
+	> Név (String, not null)
+	> Leírás (String)
+	> Szörny típus (string, enum: Normal, Effect, Synchro, Xyz, Link, Ritual)
+	> Szint (byte, not null, min 1 max 12)
+	> Attribútum (string, not null, max 1)
+	> Típus (string, not null, min 1)
+	> Támadó érték (int, not null, min 0, max 10000)
+	> Védekező érték (int, min 0, max 10000 vagy null (link szörnyek miatt)) - ellenőrizni kell szörny típust, ha link, akkor null)
+	> Link szint (byte, min 1 max 4 vagy null (sima szörnyekhez) - ellenőrizni kell szörny típust, ha nem link, akkor null)
+
+
+
+Varázs:
+	> Kártya azonosító (String, formátum: XXXX-EN012, elsődleges kulcs)
+	> Név (String, not null)
+	> Leírás (String)
+	> VarázsTípus (Enum:Normal, Quick Play, Continous, Field, Equip, Ritual)
+Csapda:
+	> Kártya azonosító (String, formátum: XXXX-EN012, elsődleges kulcs)
+	> Név (String, not null)
+	> Leírás (String)
+	> Csapdatípus (Enum: Normal, Continous, Counter)
