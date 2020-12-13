@@ -1,7 +1,7 @@
 drop table csapdalap;
 create table csapdalap
 (
-    azonosito char(9) not null,
+    azonosito varchar2(10) not null,
     nev varchar2(30) not null,
     leiras varchar2(300),
     trap_type varchar2(10) not null,
