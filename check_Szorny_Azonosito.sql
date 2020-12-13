@@ -14,9 +14,16 @@ begin
 
     if length(trim(p_rendszam)) = 10 then
         v_i := 1;
+        while v_i <= 2 loop
+            v_azonosito_char := substr(p_azonosito, v_i, 1);
+            if not (ascii('A') <= ascii(v_azonosito_char) and ascii(v_azonosito_char) <= ascii('Z')) or then
+                return 0;            
+            end if;
+            v_i := v_i + 1;
+        end loop;
         while v_i <= 4 loop
             v_azonosito_char := substr(p_azonosito, v_i, 1);
-            if not (ascii('A') <= ascii(v_azonosito_char) and ascii(v_azonosito_char) <= ascii('Z')) then
+            if not (ascii('A') <= ascii(v_azonosito_char) and ascii(v_azonosito_char) <= ascii('Z')) or (ascii('0') <= ascii(v_azonosito_char) and ascii(v_azonosito_char) <= ascii('9')) then
                 return 0;            
             end if;
             v_i := v_i + 1;
