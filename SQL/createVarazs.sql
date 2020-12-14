@@ -10,5 +10,5 @@ create table varazslap
     
     constraint pk_varazs primary key(azonosito),
     constraint ch_magic_type check(magic_type in ('normal', 'quick-play', 'continous', 'field', 'equip', 'ritual')),
-    constraint ch_varazs_rarity check(rarity in ('common', 'rare', 'super-rare', 'ultra-rare', 'secrete-rare'))
+    constraint ch_varazs_rarity check(rarity in ('common', 'rare', 'super_rare', 'ultra_rare', 'secrete_rare'))
 );

@@ -30,8 +30,8 @@ namespace YuGiOhCardLister.Models.Manager
                 varazslap.Nev = reader["nev"].ToString();
                 varazslap.Leiras = reader["leiras"].ToString();
                 varazslap.VarazsTipus = (VarazsTipus)reader["magic_type"];
-                varazslap.Rarity = (Rarity)reader["rarity"];
-                varazslap.Quantity = (int)reader["quantity"];
+                varazslap.Rarity = reader["rarity"].ToString();
+                varazslap.Quantity = reader["quantity"].ToString();
                 records.Add(varazslap);
             }
             command.Connection.Close();

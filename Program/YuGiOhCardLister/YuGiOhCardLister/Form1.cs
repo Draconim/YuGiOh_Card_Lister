@@ -42,42 +42,45 @@ namespace YuGiOhCardLister
         {
             
             
-            switch (cb_CardType.SelectedText.ToString())
+            switch (cb_CardType.Text.ToString())
             {
                 case "Szörny":
                     foreach (DataGridViewRow selectedRows in dgv_cards.SelectedRows)
                     {
                         Szornyek Torlendo = new Szornyek();
-                        Torlendo.Azonosito = selectedRows.Cells["aznosito"].Value.ToString();
+                        Torlendo.Azonosito = selectedRows.Cells["azonosito"].Value.ToString();
 
                         szornyManager.Delete(Torlendo);
                     }
 
                     MessageBox.Show(string.Format("Sor(ok) törölve."));
+                    InitDataGridViewSzorny();
                     
                     break;
                 case "Varázs":
                     foreach (DataGridViewRow selectedRows in dgv_cards.SelectedRows)
                     {
                         Varazs Torlendo = new Varazs();
-                        Torlendo.Azonosito = selectedRows.Cells["aznosito"].Value.ToString();
+                        Torlendo.Azonosito = selectedRows.Cells["azonosito"].Value.ToString();
 
                         varazsManager.Delete(Torlendo);
                     }
 
                     MessageBox.Show(string.Format("Sor(ok) törölve."));
+                    InitDataGridViewVarazs();
 
                     break;
                 case "Csapda":
                     foreach (DataGridViewRow selectedRows in dgv_cards.SelectedRows)
                     {
                         Csapda Torlendo = new Csapda();
-                        Torlendo.Azonosito = selectedRows.Cells["aznosito"].Value.ToString();
+                        Torlendo.Azonosito = selectedRows.Cells["azonosito"].Value.ToString();
 
                         csapdaManager.Delete(Torlendo);
                     }
 
                     MessageBox.Show(string.Format("Sor(ok) törölve."));
+                    InitDataGridViewCsapda();
 
                     break;
             }
@@ -386,6 +389,10 @@ namespace YuGiOhCardLister
                 LeirasCell.Value = rekords_SzornyekList[i].Leiras;
                 dataGridViewRow.Cells.Add(LeirasCell);
 
+                DataGridViewCell SzornyTipusCell = new DataGridViewTextBoxCell();
+                SzornyTipusCell.Value = rekords_SzornyekList[i].MonsterCardType;
+                dataGridViewRow.Cells.Add(SzornyTipusCell);
+
                 DataGridViewCell SzintCell = new DataGridViewTextBoxCell();
                 SzintCell.Value = rekords_SzornyekList[i].Level;
                 dataGridViewRow.Cells.Add(SzintCell);
@@ -393,10 +400,6 @@ namespace YuGiOhCardLister
                 DataGridViewCell AttributumCell = new DataGridViewTextBoxCell();
                 AttributumCell.Value = rekords_SzornyekList[i].Attribute;
                 dataGridViewRow.Cells.Add(AttributumCell);
-
-                DataGridViewCell SzornyTipusCell = new DataGridViewTextBoxCell();
-                SzornyTipusCell.Value = rekords_SzornyekList[i].MonsterCardType;
-                dataGridViewRow.Cells.Add(SzornyTipusCell);
 
                 DataGridViewCell TipusCell = new DataGridViewTextBoxCell();
                 TipusCell.Value = rekords_SzornyekList[i].Type;

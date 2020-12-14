@@ -33,17 +33,17 @@ namespace YuGiOhCardLister.Models.Other
             set { leiras = value; }
         }
 
-        private Rarity rarity;
+        private string rarity;
 
-        public Rarity Rarity
+        public string Rarity
         {
             get { return rarity; }
             set { rarity = value; }
         }
 
-        private int quantity;
+        private string quantity;
 
-        public int Quantity
+        public string Quantity
         {
             get { return quantity; }
             set { quantity = value; }

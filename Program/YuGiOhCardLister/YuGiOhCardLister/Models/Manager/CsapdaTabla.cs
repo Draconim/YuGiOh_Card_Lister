@@ -31,8 +31,8 @@ namespace YuGiOhCardLister.Models.Manager
                 csapdalap.Nev = reader["nev"].ToString();
                 csapdalap.Leiras = reader["leiras"].ToString();
                 csapdalap.CsapdaTipus = (CsapdaTipus)reader["trap_type"];
-                csapdalap.Rarity = (Rarity)reader["rarity"];
-                csapdalap.Quantity = (int)reader["quantity"];
+                csapdalap.Rarity = reader["rarity"].ToString();
+                csapdalap.Quantity = reader["quantity"].ToString();
                 records.Add(csapdalap);
             }
             command.Connection.Close();

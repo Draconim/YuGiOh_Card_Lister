@@ -25,24 +25,24 @@ namespace YuGiOhCardLister.Models.Manager
             command.CommandText = "SELECT * FROM szornyek";
             
 
-            
+            //while-ba nem lép be
 
             OracleDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 Szornyek szorny = new Szornyek();
-                szorny.Azonosito = reader["rendszam"].ToString();
+                szorny.Azonosito = reader["azonosito"].ToString();
                 szorny.Nev = reader["nev"].ToString();
                 szorny.Leiras = reader["leiras"].ToString();
-                szorny.MonsterCardType = (MonsterCardType)reader["monster_card_type"];
-                szorny.Level = (int)reader["monster_level"];
-                szorny.Attribute = (Attributum)reader["monster_attribute"];
+                szorny.MonsterCardType = reader["monster_card_type"].ToString();
+                szorny.Level = reader["monster_level"].ToString();
+                szorny.Attribute = reader["monster_attribute"].ToString();
                 szorny.Type = reader["monster_type"].ToString();
-                szorny.Attack = (int)reader["attack"];
-                szorny.Defense = (int)reader["defense"];
-                szorny.LinkLevel = (byte)reader["link_level"];
-                szorny.Rarity = (Rarity)reader["rarity"];
-                szorny.Quantity = (int)reader["quantity"];
+                szorny.Attack = reader["attack"].ToString();
+                szorny.Defense = reader["defense"].ToString();
+                szorny.LinkLevel = reader["link_level"].ToString();
+                szorny.Rarity = reader["rarity"].ToString(); ;
+                szorny.Quantity = reader["quantity"].ToString();
                 records.Add(szorny);
             }
             command.Connection.Close();
@@ -67,6 +67,7 @@ namespace YuGiOhCardLister.Models.Manager
                 Value = record.Azonosito
             };
             command.Parameters.Add(azonositoP);
+            command.ExecuteNonQuery();
             command.Connection.Close();
 
         }

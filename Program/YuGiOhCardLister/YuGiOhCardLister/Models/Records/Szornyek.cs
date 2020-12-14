@@ -10,31 +10,31 @@ namespace YuGiOhCardLister.Models.Records
 {
     class Szornyek:Kartya
     {
-        private int level;
+        private string monsterCardType;
 
-        public int Level
-        {
-            get { return level; }
-            set {
-                if (value < 1 || value > 12)
-                    throw new Exception("Hiba! A szintnek 1 és 12 között kell lennie.");
-                level = value;
-            }
-        }
-        private Attributum attribute;
-
-        public Attributum Attribute
-        {
-            get { return attribute; }
-            set { attribute = value; }
-        }
-
-        private MonsterCardType monsterCardType;
-
-        public MonsterCardType MonsterCardType
+        public string MonsterCardType
         {
             get { return monsterCardType; }
             set { monsterCardType = value; }
+        }
+
+        private string level;
+
+        public string Level
+        {
+            get { return level; }
+            set {
+                //if (int.Parse(value) < 1 || int.Parse(value) > 12)
+                //    throw new Exception("Hiba! A szintnek 1 és 12 között kell lennie.");
+                level = value;
+            }
+        }
+        private string attribute;
+
+        public string Attribute
+        {
+            get { return attribute; }
+            set { attribute = value; }
         }
 
         private string type;
@@ -44,44 +44,41 @@ namespace YuGiOhCardLister.Models.Records
             get { return type; }
             set { type = value; }
         }
-        private int attack;
+        private string attack;
 
-        public int Attack
+        public string Attack
         {
             get { return attack; }
             set {
-                if (value < 0 || value > 10000)
-                    throw new Exception("Hiba! A támadó értéknek 0 és 10000 között kell lennie!");
+                //if (int.Parse(value) < 0 || int.Parse(value) > 10000)
+                //    throw new Exception("Hiba! A támadó értéknek 0 és 10000 között kell lennie!");
                     attack = value;
             }
         }
-        private int defense;
+        private string defense;
 
-        public int Defense
+        public string Defense
         {
             get { return defense; }
             set {
-                if (value < 0 || value > 10000)
-                    throw new Exception("Hiba! A védekező értéknek 0 és 10000 között kell lennie!");
+                //if (int.Parse(value) < 0 || int.Parse(value) > 10000)
+                //    throw new Exception("Hiba! A védekező értéknek 0 és 10000 között kell lennie!");
                 defense = value;
             }
         }
 
-        private byte linkLevel;
+        private string linkLevel;
 
-        public byte LinkLevel
+        public string LinkLevel
         {
             get { return linkLevel; }
             set {
-                if (value < 0 || value > 4)
-                    throw new Exception("Hiba! A link szintnek 1 és 4 között kell lennie!");
+                //if (int.Parse(value) < 0 || int.Parse(value) > 4)
+                //    throw new Exception("Hiba! A link szintnek 1 és 4 között kell lennie!");
                 linkLevel = value;
             }
         }
 
-        //Tekintetbe véve, hogy csak a Link szörnyeknek kéne külön alosztály, 
-        //ezért ezt elkerülve egy sima Szörny alosztály kerül létrehozásra.
-        //A szörny típusát majd legördülő box-ban lehet kiválasztani.Ha a felhasználó "Link" szörnyet választ, 
-        //a szint és a védekező érték textboxa le lesz tiltva, és engedélyezve lesz a Link szint kiválaszthatása.
+
     }
 }

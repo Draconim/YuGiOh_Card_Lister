@@ -10,6 +10,6 @@ create table csapdalap
     
     constraint pk_csapdalap primary key(azonosito),
     constraint ch_trap_type check(trap_type in ('normal', 'continous', 'counter')),
-    constraint ch_csapda_rarity check(rarity in ('common', 'rare', 'super-rare', 'ultra-rare', 'secrete-rare'))
+    constraint ch_csapda_rarity check(rarity in ('common', 'rare', 'super_rare', 'ultra_rare', 'secrete_rare'))
 );
     
