@@ -57,12 +57,14 @@
     </Compile>
     <Compile Include="Models\Enums\Attributum.cs" />
     <Compile Include="Models\Enums\CsapdaTipus.cs" />
+    <Compile Include="Models\Enums\KartyaTipus.cs" />
     <Compile Include="Models\Enums\MonsterCardType.cs" />
     <Compile Include="Models\Enums\Rarity.cs" />
     <Compile Include="Models\Enums\VarazsTipus.cs" />
     <Compile Include="Models\Manager\CsapdaTabla.cs" />
     <Compile Include="Models\Manager\SzornyekTabla.cs" />
     <Compile Include="Models\Manager\VarazsTabla.cs" />
+    <Compile Include="Models\Other\adatbKapcsolat.cs" />
     <Compile Include="Models\Other\Kartya.cs" />
     <Compile Include="Models\Records\Csapda.cs" />
     <Compile Include="Models\Records\Szornyek.cs" />

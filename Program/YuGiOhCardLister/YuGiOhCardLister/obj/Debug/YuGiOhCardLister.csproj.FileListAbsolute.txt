@@ -1,0 +1,12 @@
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\bin\Debug\YuGiOhCardLister.exe.config
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\bin\Debug\YuGiOhCardLister.exe
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\bin\Debug\YuGiOhCardLister.pdb
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.csprojAssemblyReference.cache
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.Form1.resources
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.Properties.Resources.resources
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.csproj.GenerateResource.cache
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.csproj.CoreCompileInputs.cache
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.csproj.CopyComplete
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.exe
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.pdb

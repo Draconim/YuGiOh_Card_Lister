@@ -5,35 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using YuGiOhCardLister.Models.Records;
 using YuGiOhCardLister.Models.Enums;
+using YuGiOhCardLister.Models.Other;
 using Oracle.ManagedDataAccess.Client;
 
 namespace YuGiOhCardLister.Models.Manager
 {
-    class CsapdaTabla
+    class CsapdaTabla:adatbKapcsolat
     {
-        OracleConnection GetOracleConnection()
-        {
-            OracleConnection connection = new OracleConnection();
-
-            string connectionString = @"Data Source=193.225.33.71;User Id=ORA_S1340;Password=EKE2020;";
-            connection.ConnectionString = connectionString;
-            return connection;
-        }
 
         public List<Csapda> Select()
         {
             List<Csapda> records = new List<Csapda>();
 
-            OracleConnection connection = new OracleConnection();
-            connection.Open();
+            OracleCommand command = new OracleCommand();
+            command.Connection = openConnection();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "SELECT * FROM varazslap";
 
-            OracleCommand command = new OracleCommand()
-            {
-                CommandType = System.Data.CommandType.Text,
-                CommandText = "SELECT * FROM csapdalap"
-            };
-
-            command.Connection = connection;
 
             OracleDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -47,24 +35,18 @@ namespace YuGiOhCardLister.Models.Manager
                 csapdalap.Quantity = (int)reader["quantity"];
                 records.Add(csapdalap);
             }
-            connection.Close();
+            command.Connection.Close();
 
             return records;
         }
 
 
-        public int Delete(Csapda record)
+        public void Delete(Csapda record)
         {
-            OracleConnection connection = GetOracleConnection();
-            connection.Open();
-
-            OracleTransaction ot = connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
-
-            OracleCommand command = new OracleCommand()
-            {
-                CommandType = System.Data.CommandType.Text,
-                CommandText = "DELETE FROM csapdalap WHERE azonosito = :azonosito"
-            };
+            OracleCommand command = new OracleCommand();
+            command.Connection = openConnection();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "DELETE FROM csapdalap WHERE azonosito = :azonosito";
 
             OracleParameter azonositoP = new OracleParameter()
             {
@@ -74,38 +56,19 @@ namespace YuGiOhCardLister.Models.Manager
                 Value = record.Azonosito
             };
             command.Parameters.Add(azonositoP);
+            command.ExecuteNonQuery();
+            command.Connection.Close();
 
-            command.Connection = connection;
-            command.Transaction = ot;
 
-            int affectedRows = 0;
-            try
-            {
-                affectedRows = command.ExecuteNonQuery();
-                ot.Commit();
-            }
-            catch (Exception)
-            {
-                ot.Rollback();
-            }
-            connection.Close();
-
-            return affectedRows;
         }
 
 
-        public int Insert(Csapda record)
+        public void Insert(Csapda record)
         {
-            OracleConnection connection = GetOracleConnection();
-            connection.Open();
-
-            OracleTransaction ot = connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
-
-            OracleCommand command = new OracleCommand()
-            {
-                CommandType = System.Data.CommandType.StoredProcedure,
-                CommandText = "spInsert_csapda"
-            };
+            OracleCommand command = new OracleCommand();
+            command.Connection = openConnection();
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.CommandText = "spInsert_csapda";
 
 
             OracleParameter azonositoP = new OracleParameter()
@@ -171,23 +134,11 @@ namespace YuGiOhCardLister.Models.Manager
                 Direction = System.Data.ParameterDirection.Output
             };
 
-            command.Connection = connection;
-            command.Transaction = ot;
 
-            connection.Close();
+            command.ExecuteNonQuery();
+            command.Connection.Close();
+            
 
-            try
-            {
-                command.ExecuteNonQuery();
-                int affectedRows = int.Parse(rowcountParameter.Value.ToString());
-                ot.Commit();
-                return affectedRows;
-            }
-            catch (Exception)
-            {
-                ot.Rollback();
-                return 0;
-            }
 
 
         }
@@ -195,14 +146,10 @@ namespace YuGiOhCardLister.Models.Manager
 
         public bool CheckAzonosito(string azonosito)
         {
-            OracleConnection connection = GetOracleConnection();
-            connection.Open();
-
-            OracleCommand command = new OracleCommand()
-            {
-                CommandType = System.Data.CommandType.StoredProcedure,
-                CommandText = "sf_check_csapda_azonosito"
-            };
+            OracleCommand command = new OracleCommand();
+            command.Connection = openConnection();
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.CommandText = "sf_check_csapda_azonosito";
 
             OracleParameter correct = new OracleParameter()
             {
@@ -219,13 +166,12 @@ namespace YuGiOhCardLister.Models.Manager
 
             };
             command.Parameters.Add(azonositoP);
-
-            command.Connection = connection;
+           
 
             try
             {
                 int succesful = int.Parse(correct.Value.ToString());
-
+                command.Connection.Close();
                 return succesful != 0;
             }
             catch (Exception)

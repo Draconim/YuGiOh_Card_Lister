@@ -28,25 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_cards = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btn_Torles = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.cb_CardType = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_cards)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgv_cards
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 249);
-            this.dataGridView1.TabIndex = 0;
+            this.dgv_cards.AllowUserToAddRows = false;
+            this.dgv_cards.AllowUserToDeleteRows = false;
+            this.dgv_cards.AllowUserToOrderColumns = true;
+            this.dgv_cards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_cards.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgv_cards.Location = new System.Drawing.Point(12, 12);
+            this.dgv_cards.Name = "dgv_cards";
+            this.dgv_cards.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_cards.Size = new System.Drawing.Size(776, 249);
+            this.dgv_cards.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -82,14 +86,15 @@
             this.button3.Text = "Módosítás";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btn_Torles
             // 
-            this.button4.Location = new System.Drawing.Point(398, 294);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(185, 40);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Törlés";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_Torles.Location = new System.Drawing.Point(398, 294);
+            this.btn_Torles.Name = "btn_Torles";
+            this.btn_Torles.Size = new System.Drawing.Size(185, 40);
+            this.btn_Torles.TabIndex = 5;
+            this.btn_Torles.Text = "Törlés";
+            this.btn_Torles.UseVisualStyleBackColor = true;
+            this.btn_Torles.Click += new System.EventHandler(this.Btn_Torles_Click);
             // 
             // checkedListBox1
             // 
@@ -98,44 +103,51 @@
             this.checkedListBox1.Size = new System.Drawing.Size(120, 94);
             this.checkedListBox1.TabIndex = 0;
             // 
-            // comboBox1
+            // cb_CardType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(462, 268);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
+            this.cb_CardType.FormattingEnabled = true;
+            this.cb_CardType.Location = new System.Drawing.Point(462, 268);
+            this.cb_CardType.Name = "cb_CardType";
+            this.cb_CardType.Size = new System.Drawing.Size(121, 21);
+            this.cb_CardType.TabIndex = 7;
+            this.cb_CardType.SelectedIndexChanged += new System.EventHandler(this.Cb_CardType_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 342);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.cb_CardType);
+            this.Controls.Add(this.btn_Torles);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_cards);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_cards)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
+        private void BgWorker_DoWork1(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            throw new System.NotImplementedException();
+        }
+
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_cards;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btn_Torles;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cb_CardType;
     }
 }
 
