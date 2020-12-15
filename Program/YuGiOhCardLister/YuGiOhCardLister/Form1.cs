@@ -519,6 +519,159 @@ namespace YuGiOhCardLister
             dgv_cards.Rows.AddRange(dataGridViewRows);
         }
 
+        private void FillDataGridViewKeresettSzornyek()
+        {
+            rekords_SzornyekList = szornyManager.keresSelect(txb_keres.Text.ToString());
+
+            DataGridViewRow[] dataGridViewRows = new DataGridViewRow[rekords_SzornyekList.Count];
+
+            for (int i = 0; i < rekords_SzornyekList.Count; i++)
+            {
+                DataGridViewRow dataGridViewRow = new DataGridViewRow();
+
+                DataGridViewCell AzonositoCell = new DataGridViewTextBoxCell();
+                AzonositoCell.Value = rekords_SzornyekList[i].Azonosito;
+                dataGridViewRow.Cells.Add(AzonositoCell);
+
+                DataGridViewCell NevCell = new DataGridViewTextBoxCell();
+                NevCell.Value = rekords_SzornyekList[i].Nev;
+                dataGridViewRow.Cells.Add(NevCell);
+
+                DataGridViewCell LeirasCell = new DataGridViewTextBoxCell();
+                LeirasCell.Value = rekords_SzornyekList[i].Leiras;
+                dataGridViewRow.Cells.Add(LeirasCell);
+
+                DataGridViewCell SzornyTipusCell = new DataGridViewTextBoxCell();
+                SzornyTipusCell.Value = rekords_SzornyekList[i].MonsterCardType;
+                dataGridViewRow.Cells.Add(SzornyTipusCell);
+
+                DataGridViewCell SzintCell = new DataGridViewTextBoxCell();
+                SzintCell.Value = rekords_SzornyekList[i].Level;
+                dataGridViewRow.Cells.Add(SzintCell);
+
+                DataGridViewCell AttributumCell = new DataGridViewTextBoxCell();
+                AttributumCell.Value = rekords_SzornyekList[i].Attribute;
+                dataGridViewRow.Cells.Add(AttributumCell);
+
+                DataGridViewCell TipusCell = new DataGridViewTextBoxCell();
+                TipusCell.Value = rekords_SzornyekList[i].Type;
+                dataGridViewRow.Cells.Add(TipusCell);
+
+                DataGridViewCell AtkCell = new DataGridViewTextBoxCell();
+                AtkCell.Value = rekords_SzornyekList[i].Attack;
+                dataGridViewRow.Cells.Add(AtkCell);
+
+                DataGridViewCell DefCell = new DataGridViewTextBoxCell();
+                DefCell.Value = rekords_SzornyekList[i].Defense;
+                dataGridViewRow.Cells.Add(DefCell);
+
+                DataGridViewCell LinkSzintCell = new DataGridViewTextBoxCell();
+                LinkSzintCell.Value = rekords_SzornyekList[i].LinkLevel;
+                dataGridViewRow.Cells.Add(LinkSzintCell);
+
+                DataGridViewCell RitkasagCell = new DataGridViewTextBoxCell();
+                RitkasagCell.Value = rekords_SzornyekList[i].Rarity;
+                dataGridViewRow.Cells.Add(RitkasagCell);
+
+                DataGridViewCell MennyisegCell = new DataGridViewTextBoxCell();
+                MennyisegCell.Value = rekords_SzornyekList[i].Quantity;
+                dataGridViewRow.Cells.Add(MennyisegCell);
+
+
+                dataGridViewRows[i] = dataGridViewRow;
+            }
+            dgv_cards.Rows.Clear();
+            dgv_cards.Rows.AddRange(dataGridViewRows);
+        }
+
+        private void FillDataGridViewKeresettVarazs()
+        {
+
+            rekords_VarazsList = varazsManager.keresSelect(txb_keres.Text.ToString());
+
+
+
+            DataGridViewRow[] dataGridViewRows = new DataGridViewRow[rekords_VarazsList.Count];
+
+            for (int i = 0; i < rekords_VarazsList.Count; i++)
+            {
+                DataGridViewRow dataGridViewRow = new DataGridViewRow();
+
+                DataGridViewCell AzonositoCell = new DataGridViewTextBoxCell();
+                AzonositoCell.Value = rekords_VarazsList[i].Azonosito;
+                dataGridViewRow.Cells.Add(AzonositoCell);
+
+                DataGridViewCell NevCell = new DataGridViewTextBoxCell();
+                NevCell.Value = rekords_VarazsList[i].Nev;
+                dataGridViewRow.Cells.Add(NevCell);
+
+                DataGridViewCell LeirasCell = new DataGridViewTextBoxCell();
+                LeirasCell.Value = rekords_VarazsList[i].Leiras;
+                dataGridViewRow.Cells.Add(LeirasCell);
+
+                DataGridViewCell VarazsTipusCell = new DataGridViewTextBoxCell();
+                VarazsTipusCell.Value = rekords_VarazsList[i].VarazsTipus;
+                dataGridViewRow.Cells.Add(VarazsTipusCell);
+
+                DataGridViewCell RitkasagCell = new DataGridViewTextBoxCell();
+                RitkasagCell.Value = rekords_VarazsList[i].Rarity;
+                dataGridViewRow.Cells.Add(RitkasagCell);
+
+                DataGridViewCell MennyisegCell = new DataGridViewTextBoxCell();
+                MennyisegCell.Value = rekords_VarazsList[i].Quantity;
+                dataGridViewRow.Cells.Add(MennyisegCell);
+
+
+                dataGridViewRows[i] = dataGridViewRow;
+            }
+            dgv_cards.Rows.Clear();
+            dgv_cards.Rows.AddRange(dataGridViewRows);
+        }
+
+        private void FillDataGridViewKeresettCsapda()
+        {
+
+
+            rekords_CsapdaList = csapdaManager.keresSelect(txb_keres.Text.ToString());
+
+            DataGridViewRow[] dataGridViewRows = new DataGridViewRow[rekords_CsapdaList.Count];
+
+            for (int i = 0; i < rekords_CsapdaList.Count; i++)
+            {
+                DataGridViewRow dataGridViewRow = new DataGridViewRow();
+
+                DataGridViewCell AzonositoCell = new DataGridViewTextBoxCell();
+                AzonositoCell.Value = rekords_CsapdaList[i].Azonosito;
+                dataGridViewRow.Cells.Add(AzonositoCell);
+
+                DataGridViewCell NevCell = new DataGridViewTextBoxCell();
+                NevCell.Value = rekords_CsapdaList[i].Nev;
+                dataGridViewRow.Cells.Add(NevCell);
+
+                DataGridViewCell LeirasCell = new DataGridViewTextBoxCell();
+                LeirasCell.Value = rekords_CsapdaList[i].Leiras;
+                dataGridViewRow.Cells.Add(LeirasCell);
+
+                DataGridViewCell VarazsTipusCell = new DataGridViewTextBoxCell();
+                VarazsTipusCell.Value = rekords_CsapdaList[i].CsapdaTipus;
+                dataGridViewRow.Cells.Add(VarazsTipusCell);
+
+                DataGridViewCell RitkasagCell = new DataGridViewTextBoxCell();
+                RitkasagCell.Value = rekords_CsapdaList[i].Rarity;
+                dataGridViewRow.Cells.Add(RitkasagCell);
+
+                DataGridViewCell MennyisegCell = new DataGridViewTextBoxCell();
+                MennyisegCell.Value = rekords_CsapdaList[i].Quantity;
+                dataGridViewRow.Cells.Add(MennyisegCell);
+
+
+                dataGridViewRows[i] = dataGridViewRow;
+            }
+            dgv_cards.Rows.Clear();
+            dgv_cards.Rows.AddRange(dataGridViewRows);
+        }
+
+
         private void Cb_CardType_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (cb_CardType.Text.ToString())
@@ -534,6 +687,48 @@ namespace YuGiOhCardLister
                     break;
             }
         }
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Valasztas valasztasform = new Valasztas();
+            
+            valasztasform.Show();
+           
+        }
+        public static void AddCardByResult(string valasztas)
+        {
+            switch (valasztas)
+            {
+                case "Szörny":
+                    HozzaadSzorny szornyForm = new HozzaadSzorny();
+                    szornyForm.Show();
+                    break;
+                case "Csapdalap":
+                    HozzaadCsapda csapdaForm = new HozzaadCsapda();
+                    csapdaForm.Show();
+                    break;
+                case "Varázslap":
+                    HozzaadVarazs varazsForm = new HozzaadVarazs();
+                    varazsForm.Show();
+                    break;
+            }
+            
+        }
 
+        private void Btn_kereses_Click(object sender, EventArgs e)
+        {
+            switch (cb_CardType.Text.ToString())
+            {
+                case "Szörny":
+                    FillDataGridViewKeresettSzornyek();
+                    break;
+                case "Varázslap":
+                    FillDataGridViewKeresettVarazs();
+                    break;
+                case "Csapdalap":
+                    FillDataGridViewKeresettCsapda();
+                    break;
+            }
+            
+        }
     }
 }

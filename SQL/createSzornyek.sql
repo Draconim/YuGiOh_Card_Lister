@@ -1,7 +1,7 @@
 drop table szornyek;
 CREATE TABLE szornyek(
     azonosito varchar2(10) not null,
-    nev varchar2(30) not null,
+    nev varchar2(60) not null,
     leiras varchar2(300),
     monster_card_type varchar2(10) not null,
     monster_level int,

@@ -2,7 +2,7 @@ drop table varazslap;
 create table varazslap
 (
     azonosito varchar2(10) not null,
-    nev varchar2(30) not null,
+    nev varchar2(60) not null,
     leiras varchar2(300),
     magic_type varchar2(11) not null,
     rarity varchar2(15) not null,

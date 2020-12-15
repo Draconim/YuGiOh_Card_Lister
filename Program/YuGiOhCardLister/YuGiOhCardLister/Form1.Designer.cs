@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.dgv_cards = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txb_keres = new System.Windows.Forms.TextBox();
+            this.btn_kereses = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn_modositas = new System.Windows.Forms.Button();
             this.btn_Torles = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.cb_CardType = new System.Windows.Forms.ComboBox();
@@ -43,7 +43,6 @@
             // 
             this.dgv_cards.AllowUserToAddRows = false;
             this.dgv_cards.AllowUserToDeleteRows = false;
-            this.dgv_cards.AllowUserToOrderColumns = true;
             this.dgv_cards.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_cards.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgv_cards.Location = new System.Drawing.Point(12, 12);
@@ -52,21 +51,23 @@
             this.dgv_cards.Size = new System.Drawing.Size(776, 249);
             this.dgv_cards.TabIndex = 0;
             // 
-            // textBox1
+            // txb_keres
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 268);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(444, 20);
-            this.textBox1.TabIndex = 1;
+            this.txb_keres.Location = new System.Drawing.Point(12, 268);
+            this.txb_keres.Name = "txb_keres";
+            this.txb_keres.Size = new System.Drawing.Size(444, 20);
+            this.txb_keres.TabIndex = 1;
+            this.txb_keres.Text = "Név";
             // 
-            // button1
+            // btn_kereses
             // 
-            this.button1.Location = new System.Drawing.Point(589, 266);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Keresés";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_kereses.Location = new System.Drawing.Point(589, 266);
+            this.btn_kereses.Name = "btn_kereses";
+            this.btn_kereses.Size = new System.Drawing.Size(199, 23);
+            this.btn_kereses.TabIndex = 2;
+            this.btn_kereses.Text = "Keresés";
+            this.btn_kereses.UseVisualStyleBackColor = true;
+            this.btn_kereses.Click += new System.EventHandler(this.Btn_kereses_Click);
             // 
             // button2
             // 
@@ -76,15 +77,16 @@
             this.button2.TabIndex = 3;
             this.button2.Text = "Új hozzáadása";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // button3
+            // btn_modositas
             // 
-            this.button3.Location = new System.Drawing.Point(198, 294);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(194, 40);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Módosítás";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btn_modositas.Location = new System.Drawing.Point(198, 294);
+            this.btn_modositas.Name = "btn_modositas";
+            this.btn_modositas.Size = new System.Drawing.Size(194, 40);
+            this.btn_modositas.TabIndex = 4;
+            this.btn_modositas.Text = "Módosítás";
+            this.btn_modositas.UseVisualStyleBackColor = true;
             // 
             // btn_Torles
             // 
@@ -119,10 +121,10 @@
             this.ClientSize = new System.Drawing.Size(800, 342);
             this.Controls.Add(this.cb_CardType);
             this.Controls.Add(this.btn_Torles);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn_modositas);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btn_kereses);
+            this.Controls.Add(this.txb_keres);
             this.Controls.Add(this.dgv_cards);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -141,10 +143,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_cards;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txb_keres;
+        private System.Windows.Forms.Button btn_kereses;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn_modositas;
         private System.Windows.Forms.Button btn_Torles;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.ComboBox cb_CardType;

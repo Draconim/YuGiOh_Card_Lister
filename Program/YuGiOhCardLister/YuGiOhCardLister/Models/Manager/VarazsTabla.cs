@@ -26,10 +26,10 @@ namespace YuGiOhCardLister.Models.Manager
             while (reader.Read())
             {
                 Varazs varazslap = new Varazs();
-                varazslap.Azonosito = reader["rendszam"].ToString();
+                varazslap.Azonosito = reader["azonosito"].ToString();
                 varazslap.Nev = reader["nev"].ToString();
                 varazslap.Leiras = reader["leiras"].ToString();
-                varazslap.VarazsTipus = (VarazsTipus)reader["magic_type"];
+                varazslap.VarazsTipus = reader["magic_type"].ToString(); ;
                 varazslap.Rarity = reader["rarity"].ToString();
                 varazslap.Quantity = reader["quantity"].ToString();
                 records.Add(varazslap);
@@ -39,7 +39,31 @@ namespace YuGiOhCardLister.Models.Manager
             return records;
         }
 
+        public List<Varazs> keresSelect(string nev)
+        {
+            List<Varazs> records = new List<Varazs>();
 
+            OracleCommand command = new OracleCommand();
+            command.Connection = openConnection();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "SELECT * FROM varazslap WHERE nev LIKE '%"+nev+"%'";
+
+            OracleDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Varazs varazslap = new Varazs();
+                varazslap.Azonosito = reader["azonosito"].ToString();
+                varazslap.Nev = reader["nev"].ToString();
+                varazslap.Leiras = reader["leiras"].ToString();
+                varazslap.VarazsTipus = reader["magic_type"].ToString(); ;
+                varazslap.Rarity = reader["rarity"].ToString();
+                varazslap.Quantity = reader["quantity"].ToString();
+                records.Add(varazslap);
+            }
+            command.Connection.Close();
+
+            return records;
+        }
         public void Delete(Varazs record)
         {
             OracleCommand command = new OracleCommand();
@@ -122,16 +146,7 @@ namespace YuGiOhCardLister.Models.Manager
                 Value = record.Quantity
             };
             command.Parameters.Add(quantityP);
-
-
-
-            OracleParameter rowcountParameter = new OracleParameter()
-            {
-                DbType = System.Data.DbType.Int32,
-                ParameterName = "p_out_rowcnt",
-                Direction = System.Data.ParameterDirection.Output
-            };
-
+            command.ExecuteNonQuery();
 
             command.Connection.Close();
 

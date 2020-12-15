@@ -10,9 +10,9 @@ namespace YuGiOhCardLister.Models.Records
 {
     class Varazs:Kartya
     {
-        private VarazsTipus varazsTipus;
+        private string varazsTipus;
 
-        public VarazsTipus VarazsTipus
+        public string VarazsTipus
         {
             get { return varazsTipus; }
             set { varazsTipus = value; }

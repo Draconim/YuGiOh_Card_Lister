@@ -10,9 +10,9 @@ namespace YuGiOhCardLister.Models.Records
 {
     class Csapda:Kartya
     {
-        private CsapdaTipus csapdaTipus;
+        private string csapdaTipus;
 
-        public CsapdaTipus CsapdaTipus
+        public string CsapdaTipus
         {
             get { return csapdaTipus; }
             set { csapdaTipus = value; }

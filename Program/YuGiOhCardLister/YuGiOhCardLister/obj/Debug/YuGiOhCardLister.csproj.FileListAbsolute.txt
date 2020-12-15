@@ -10,3 +10,7 @@ C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCa
 C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.csproj.CopyComplete
 C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.exe
 C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.pdb
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.Valasztas.resources
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.HozzaadSzorny.resources
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.HozzaadVarazs.resources
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.HozzaadCsapda.resources

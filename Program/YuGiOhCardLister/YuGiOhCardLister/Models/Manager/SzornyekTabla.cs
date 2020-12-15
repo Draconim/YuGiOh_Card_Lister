@@ -25,7 +25,7 @@ namespace YuGiOhCardLister.Models.Manager
             command.CommandText = "SELECT * FROM szornyek";
             
 
-            //while-ba nem lép be
+            
 
             OracleDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -49,7 +49,49 @@ namespace YuGiOhCardLister.Models.Manager
 
             return records;
         }
+        public List<Szornyek> keresSelect(string nev)
+        {
+            List<Szornyek> records = new List<Szornyek>();
 
+
+
+            OracleCommand command = new OracleCommand();
+            command.Connection = openConnection();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "SELECT * FROM szornyek WHERE nev LIKE '%"+nev+"%'";
+            //OracleParameter nevP = new OracleParameter()
+            //{
+            //    DbType = System.Data.DbType.String,
+            //    ParameterName = ":nev",
+            //    Direction = System.Data.ParameterDirection.Input,
+            //    Value = nev
+            //};
+            //command.Parameters.Add(nevP);
+
+            //paraméter hozzáadásával nem dob vissza egy sort sem
+
+            OracleDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Szornyek szorny = new Szornyek();
+                szorny.Azonosito = reader["azonosito"].ToString();
+                szorny.Nev = reader["nev"].ToString();
+                szorny.Leiras = reader["leiras"].ToString();
+                szorny.MonsterCardType = reader["monster_card_type"].ToString();
+                szorny.Level = reader["monster_level"].ToString();
+                szorny.Attribute = reader["monster_attribute"].ToString();
+                szorny.Type = reader["monster_type"].ToString();
+                szorny.Attack = reader["attack"].ToString();
+                szorny.Defense = reader["defense"].ToString();
+                szorny.LinkLevel = reader["link_level"].ToString();
+                szorny.Rarity = reader["rarity"].ToString(); ;
+                szorny.Quantity = reader["quantity"].ToString();
+                records.Add(szorny);
+            }
+            command.Connection.Close();
+
+            return records;
+        }
 
         public void Delete(Szornyek record)
         {
@@ -190,14 +232,6 @@ namespace YuGiOhCardLister.Models.Manager
             };
             command.Parameters.Add(quantityP);
 
-
-
-            OracleParameter rowcountParameter = new OracleParameter()
-            {
-                DbType = System.Data.DbType.Int32,
-                ParameterName = "p_out_rowcnt",
-                Direction = System.Data.ParameterDirection.Output
-            };
             command.ExecuteNonQuery();
             command.Connection.Close();
             

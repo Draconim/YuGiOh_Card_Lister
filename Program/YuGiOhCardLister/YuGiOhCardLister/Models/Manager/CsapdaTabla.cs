@@ -20,17 +20,17 @@ namespace YuGiOhCardLister.Models.Manager
             OracleCommand command = new OracleCommand();
             command.Connection = openConnection();
             command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "SELECT * FROM varazslap";
+            command.CommandText = "SELECT * FROM csapdalap";
 
 
             OracleDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 Csapda csapdalap = new Csapda();
-                csapdalap.Azonosito = reader["rendszam"].ToString();
+                csapdalap.Azonosito = reader["azonosito"].ToString();
                 csapdalap.Nev = reader["nev"].ToString();
                 csapdalap.Leiras = reader["leiras"].ToString();
-                csapdalap.CsapdaTipus = (CsapdaTipus)reader["trap_type"];
+                csapdalap.CsapdaTipus = reader["trap_type"].ToString();
                 csapdalap.Rarity = reader["rarity"].ToString();
                 csapdalap.Quantity = reader["quantity"].ToString();
                 records.Add(csapdalap);
@@ -39,7 +39,32 @@ namespace YuGiOhCardLister.Models.Manager
 
             return records;
         }
+        public List<Csapda> keresSelect(string nev)
+        {
+            List<Csapda> records = new List<Csapda>();
 
+            OracleCommand command = new OracleCommand();
+            command.Connection = openConnection();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "SELECT * FROM csapdalap WHERE name LIKE '%"+nev+"%'";
+
+
+            OracleDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                Csapda csapdalap = new Csapda();
+                csapdalap.Azonosito = reader["azonosito"].ToString();
+                csapdalap.Nev = reader["nev"].ToString();
+                csapdalap.Leiras = reader["leiras"].ToString();
+                csapdalap.CsapdaTipus = reader["trap_type"].ToString();
+                csapdalap.Rarity = reader["rarity"].ToString();
+                csapdalap.Quantity = reader["quantity"].ToString();
+                records.Add(csapdalap);
+            }
+            command.Connection.Close();
+
+            return records;
+        }
 
         public void Delete(Csapda record)
         {
@@ -125,14 +150,6 @@ namespace YuGiOhCardLister.Models.Manager
             };
             command.Parameters.Add(quantityP);
 
-
-
-            OracleParameter rowcountParameter = new OracleParameter()
-            {
-                DbType = System.Data.DbType.Int32,
-                ParameterName = "p_out_rowcnt",
-                Direction = System.Data.ParameterDirection.Output
-            };
 
 
             command.ExecuteNonQuery();
