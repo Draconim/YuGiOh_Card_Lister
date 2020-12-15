@@ -36,6 +36,7 @@
             this.btn_Torles = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.cb_CardType = new System.Windows.Forms.ComboBox();
+            this.btn_kilepes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cards)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,6 +88,7 @@
             this.btn_modositas.TabIndex = 4;
             this.btn_modositas.Text = "Módosítás";
             this.btn_modositas.UseVisualStyleBackColor = true;
+            this.btn_modositas.Click += new System.EventHandler(this.Btn_modositas_Click);
             // 
             // btn_Torles
             // 
@@ -114,11 +116,22 @@
             this.cb_CardType.TabIndex = 7;
             this.cb_CardType.SelectedIndexChanged += new System.EventHandler(this.Cb_CardType_SelectedIndexChanged);
             // 
+            // btn_kilepes
+            // 
+            this.btn_kilepes.Location = new System.Drawing.Point(590, 296);
+            this.btn_kilepes.Name = "btn_kilepes";
+            this.btn_kilepes.Size = new System.Drawing.Size(198, 38);
+            this.btn_kilepes.TabIndex = 8;
+            this.btn_kilepes.Text = "Kilépés";
+            this.btn_kilepes.UseVisualStyleBackColor = true;
+            this.btn_kilepes.Click += new System.EventHandler(this.Btn_kilepes_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 342);
+            this.Controls.Add(this.btn_kilepes);
             this.Controls.Add(this.cb_CardType);
             this.Controls.Add(this.btn_Torles);
             this.Controls.Add(this.btn_modositas);
@@ -150,6 +163,7 @@
         private System.Windows.Forms.Button btn_Torles;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.ComboBox cb_CardType;
+        private System.Windows.Forms.Button btn_kilepes;
     }
 }
 

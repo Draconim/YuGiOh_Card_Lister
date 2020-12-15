@@ -57,7 +57,7 @@ namespace YuGiOhCardLister
                     InitDataGridViewSzorny();
                     
                     break;
-                case "Varázs":
+                case "Varázslap":
                     foreach (DataGridViewRow selectedRows in dgv_cards.SelectedRows)
                     {
                         Varazs Torlendo = new Varazs();
@@ -70,7 +70,7 @@ namespace YuGiOhCardLister
                     InitDataGridViewVarazs();
 
                     break;
-                case "Csapda":
+                case "Csapdalap":
                     foreach (DataGridViewRow selectedRows in dgv_cards.SelectedRows)
                     {
                         Csapda Torlendo = new Csapda();
@@ -110,7 +110,7 @@ namespace YuGiOhCardLister
 
         }
 
-        private void InitDataGridViewSzorny()
+        public void InitDataGridViewSzorny()
         {
             dgv_cards.Rows.Clear();
             dgv_cards.Columns.Clear();
@@ -233,7 +233,7 @@ namespace YuGiOhCardLister
 
         }
 
-        private void InitDataGridViewVarazs()
+        public void InitDataGridViewVarazs()
         {
             dgv_cards.Rows.Clear();
             dgv_cards.Columns.Clear();
@@ -299,7 +299,7 @@ namespace YuGiOhCardLister
                     FillDataGridViewVarazs();
         }
 
-        private void InitDataGridViewCsapda()
+        public void InitDataGridViewCsapda()
         {
             dgv_cards.Rows.Clear();
             dgv_cards.Columns.Clear();
@@ -521,7 +521,7 @@ namespace YuGiOhCardLister
 
         private void FillDataGridViewKeresettSzornyek()
         {
-            rekords_SzornyekList = szornyManager.keresSelect(txb_keres.Text.ToString());
+            rekords_SzornyekList = szornyManager.keresSelect(txb_keres.Text.ToString(),null);
 
             DataGridViewRow[] dataGridViewRows = new DataGridViewRow[rekords_SzornyekList.Count];
 
@@ -587,7 +587,7 @@ namespace YuGiOhCardLister
         private void FillDataGridViewKeresettVarazs()
         {
 
-            rekords_VarazsList = varazsManager.keresSelect(txb_keres.Text.ToString());
+            rekords_VarazsList = varazsManager.keresSelect(txb_keres.Text.ToString(), null);
 
 
 
@@ -632,7 +632,7 @@ namespace YuGiOhCardLister
         {
 
 
-            rekords_CsapdaList = csapdaManager.keresSelect(txb_keres.Text.ToString());
+            rekords_CsapdaList = csapdaManager.keresSelect(txb_keres.Text.ToString(), null);
 
             DataGridViewRow[] dataGridViewRows = new DataGridViewRow[rekords_CsapdaList.Count];
 
@@ -726,6 +726,55 @@ namespace YuGiOhCardLister
                     break;
                 case "Csapdalap":
                     FillDataGridViewKeresettCsapda();
+                    break;
+            }
+            
+        }
+
+        private void Btn_kilepes_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Btn_modositas_Click(object sender, EventArgs e)
+        {
+            switch (cb_CardType.Text.ToString())
+            {
+                case "Szörny":
+                    Szornyek atadas3 = new Szornyek();
+                    foreach (DataGridViewRow selectedRows in dgv_cards.SelectedRows)
+                    {
+
+                        atadas3.Azonosito = selectedRows.Cells["azonosito"].Value.ToString();
+
+
+                    }
+                    UpdateSzorny form3 = new UpdateSzorny(atadas3.Azonosito);
+                    form3.Show();
+                    break;
+                case "Varázslap":
+                    Varazs atadas = new Varazs();
+                    foreach (DataGridViewRow selectedRows in dgv_cards.SelectedRows)
+                    {
+
+                        atadas.Azonosito = selectedRows.Cells["azonosito"].Value.ToString();
+
+
+                    }
+                    UpdateVarazs form1 = new UpdateVarazs(atadas.Azonosito);
+                    form1.Show();
+                    break;
+                case "Csapdalap":
+                    Csapda atadas2 = new Csapda();
+                    foreach (DataGridViewRow selectedRows in dgv_cards.SelectedRows)
+                    {
+
+                        atadas2.Azonosito = selectedRows.Cells["azonosito"].Value.ToString();
+
+
+                    }
+                    UpdateCsapda form2 = new UpdateCsapda(atadas2.Azonosito);
+                    form2.Show();
                     break;
             }
             

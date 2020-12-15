@@ -59,6 +59,8 @@ namespace YuGiOhCardLister
                                 CsapdaTabla manager = new CsapdaTabla();
                                 manager.Insert(csapdalap);
                                 MessageBox.Show("A feltöltés megtörtént!");
+                                Form1 form = new Form1();
+                                form.InitDataGridViewCsapda();
                                 this.Close();
                             }
                             else

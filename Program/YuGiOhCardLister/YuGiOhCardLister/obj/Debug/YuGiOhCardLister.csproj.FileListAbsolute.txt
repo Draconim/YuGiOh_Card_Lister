@@ -14,3 +14,6 @@ C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCa
 C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.HozzaadSzorny.resources
 C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.HozzaadVarazs.resources
 C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.HozzaadCsapda.resources
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.UpdateVarazs.resources
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.UpdateCsapda.resources
+C:\Users\Draconim\Desktop\Adatbázis beadandó\Program\YuGiOhCardLister\YuGiOhCardLister\obj\Debug\YuGiOhCardLister.UpdateSzorny.resources

@@ -31,6 +31,8 @@ namespace YuGiOhCardLister
 
         private void Btn_feltolt_Click(object sender, EventArgs e)
         {
+
+            
             if (txb_azonosito.Text.ToString().Length != 10)
                 MessageBox.Show("A megadott azonosító formátuma hibás! Helyes formátum: XX12-EN012");
             else
@@ -58,6 +60,8 @@ namespace YuGiOhCardLister
                                 VarazsTabla manager = new VarazsTabla();
                                 manager.Insert(varazslap);
                                 MessageBox.Show("A feltöltés megtörtént!");
+                                Form1 form = new Form1();
+                                form.InitDataGridViewVarazs();
                                 this.Close();
                             }
                             else

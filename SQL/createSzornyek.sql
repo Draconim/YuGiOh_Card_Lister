@@ -16,6 +16,6 @@ CREATE TABLE szornyek(
     
     constraint pk_szornyek primary key(azonosito),
     constraint ch_monster_card_type check(monster_card_type in ('normal', 'effect', 'synchro', 'xyz', 'link', 'ritual')),
-    constraint ch_attribute check(monster_attribute in ('light', 'dark', 'earth', 'water', 'wind', 'fire', 'divine_beast')),
+    constraint ch_attribute check(monster_attribute in ('light', 'dark', 'rock', 'water', 'wind', 'fire', 'divine_beast')),
     constraint ch_rarity check(rarity in ('common', 'rare', 'super_rare', 'ultra_rare', 'secrete_rare'))
 );

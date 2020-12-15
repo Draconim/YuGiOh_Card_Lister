@@ -66,6 +66,8 @@ namespace YuGiOhCardLister
                                     SzornyekTabla manager = new SzornyekTabla();
                                     manager.Insert(szorny);
                                     MessageBox.Show("A feltöltés megtörtént!");
+                                    Form1 form = new Form1();
+                                    form.InitDataGridViewSzorny();
                                     this.Close();
                                 }
                                 else

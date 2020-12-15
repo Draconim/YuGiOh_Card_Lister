@@ -49,16 +49,27 @@ namespace YuGiOhCardLister.Models.Manager
 
             return records;
         }
-        public List<Szornyek> keresSelect(string nev)
+        public List<Szornyek> keresSelect(string nev, string azonosito)
         {
-            List<Szornyek> records = new List<Szornyek>();
-
-
-
             OracleCommand command = new OracleCommand();
-            command.Connection = openConnection();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "SELECT * FROM szornyek WHERE nev LIKE '%"+nev+"%'";
+            List<Szornyek> records = new List<Szornyek>();
+            OracleDataReader reader;
+            if (nev != null)
+            {
+
+                command.Connection = openConnection();
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = "SELECT * FROM szornyek WHERE nev LIKE '%" + nev + "%'";
+                reader = command.ExecuteReader();
+            }
+            else
+            {
+
+                command.Connection = openConnection();
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = "SELECT * FROM szornyek WHERE azonosito='" + azonosito + "'";
+                reader = command.ExecuteReader();
+            }
             //OracleParameter nevP = new OracleParameter()
             //{
             //    DbType = System.Data.DbType.String,
@@ -70,7 +81,6 @@ namespace YuGiOhCardLister.Models.Manager
 
             //paraméter hozzáadásával nem dob vissza egy sort sem
 
-            OracleDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 Szornyek szorny = new Szornyek();
@@ -114,6 +124,133 @@ namespace YuGiOhCardLister.Models.Manager
 
         }
 
+
+        public void Update(Szornyek record, string regiAzon)
+        {
+            OracleCommand command = new OracleCommand();
+            command.Connection = openConnection();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "UPDATE SZORNYEK SET azonosito=:azonosito, nev=:nev, leiras=:leiras,monster_card_type=:monster_card_type, monster_level=:monster_level, monster_attribute=:monster_attribute, monster_type=:monster_type,attack=:attack, defense=:defense, link_level=:link_level, rarity=:rarity, quantity=:quantity WHERE azonosito=:regiAzon";
+            OracleParameter azonositoP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":azonosito",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Azonosito
+            };
+            command.Parameters.Add(azonositoP);
+
+            OracleParameter nevP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":nev",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Nev
+            };
+            command.Parameters.Add(nevP);
+
+            OracleParameter leirasP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":leiras",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Leiras
+            };
+            command.Parameters.Add(leirasP);
+
+            OracleParameter monsterCardTypeP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":monster_card_type",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.MonsterCardType
+            };
+            command.Parameters.Add(monsterCardTypeP);
+
+            OracleParameter monsterLevelP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":monster_level",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Level
+            };
+            command.Parameters.Add(monsterLevelP);
+
+            OracleParameter monsterAttributeP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":monster_attribute",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Attribute
+            };
+            command.Parameters.Add(monsterAttributeP);
+
+            OracleParameter monsterTypeP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":monster_type",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Type
+            };
+            command.Parameters.Add(monsterTypeP);
+
+            OracleParameter attackP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":attack",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Attack
+            };
+            command.Parameters.Add(attackP);
+
+            OracleParameter defenseP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":defense",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Defense
+            };
+            command.Parameters.Add(defenseP);
+
+            OracleParameter linkLevelP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":link_level",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.LinkLevel
+            };
+            command.Parameters.Add(linkLevelP);
+
+            OracleParameter rarityP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":rarity",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Rarity
+            };
+            command.Parameters.Add(rarityP);
+
+            OracleParameter quantityP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":quantity",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Quantity
+            };
+            command.Parameters.Add(quantityP);
+
+            OracleParameter regiAzonositoP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":regiAzon",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = regiAzon
+            };
+            command.Parameters.Add(regiAzonositoP);
+
+            command.ExecuteNonQuery();
+            command.Connection.Close();
+        }
 
         public void Insert(Szornyek record)
         {
@@ -238,43 +375,6 @@ namespace YuGiOhCardLister.Models.Manager
         }
 
 
-        public bool CheckAzonosito(string azonosito)
-        {
-            OracleCommand command = new OracleCommand();
-            command.Connection = openConnection();
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.CommandText = "sf_check_szorny_azonosito";
-
-            OracleParameter correct = new OracleParameter()
-            {
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.ReturnValue
-            };
-
-            OracleParameter azonositoP = new OracleParameter()
-            {
-                DbType = System.Data.DbType.String,
-                ParameterName = "p_azonosito",
-                Direction = System.Data.ParameterDirection.Input,
-                Value = azonosito
-
-            };
-            command.Parameters.Add(azonositoP);
-
-           
-
-            try
-            {
-                int succesful = int.Parse(correct.Value.ToString());
-                command.Connection.Close();
-                return succesful != 0;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-
-        }
+        
     }
 }

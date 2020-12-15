@@ -39,16 +39,28 @@ namespace YuGiOhCardLister.Models.Manager
             return records;
         }
 
-        public List<Varazs> keresSelect(string nev)
+        public List<Varazs> keresSelect(string nev,string azonosito)
         {
-            List<Varazs> records = new List<Varazs>();
-
             OracleCommand command = new OracleCommand();
-            command.Connection = openConnection();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "SELECT * FROM varazslap WHERE nev LIKE '%"+nev+"%'";
+            List<Varazs> records = new List<Varazs>();
+            OracleDataReader reader;
+            if (nev != null)
+            {
+                
+                command.Connection = openConnection();
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = "SELECT * FROM varazslap WHERE nev LIKE '%" + nev + "%'";
+                reader = command.ExecuteReader();
+            }
+            else
+            {
 
-            OracleDataReader reader = command.ExecuteReader();
+                command.Connection = openConnection();
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = "SELECT * FROM varazslap WHERE azonosito='" + azonosito + "'";
+                reader = command.ExecuteReader();
+            }
+            
             while (reader.Read())
             {
                 Varazs varazslap = new Varazs();
@@ -79,11 +91,84 @@ namespace YuGiOhCardLister.Models.Manager
                 Value = record.Azonosito
             };
             command.Parameters.Add(azonositoP);
-
+            command.ExecuteNonQuery();
             command.Connection.Close();
 
         }
 
+
+        public void Update(Varazs record, string regiAzon)
+        {
+            OracleCommand command = new OracleCommand();
+            command.Connection = openConnection();
+            command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "UPDATE VARAZSLAP SET azonosito=:azonosito, nev=:nev, leiras=:leiras, magic_type=:magic_type, rarity=:rarity, quantity=:quantity WHERE azonosito=:regiAzon";
+            OracleParameter azonositoP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":azonosito",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Azonosito
+            };
+            command.Parameters.Add(azonositoP);
+
+            OracleParameter nevP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":nev",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Nev
+            };
+            command.Parameters.Add(nevP);
+
+            OracleParameter leirasP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":leiras",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Leiras
+            };
+            command.Parameters.Add(leirasP);
+
+            OracleParameter magicTypeP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":magic_type",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.VarazsTipus
+            };
+            command.Parameters.Add(magicTypeP);
+
+            OracleParameter rarityP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":rarity",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Rarity
+            };
+            command.Parameters.Add(rarityP);
+
+            OracleParameter quantityP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":quantity",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = record.Quantity
+            };
+            command.Parameters.Add(quantityP);
+
+            OracleParameter regiAzonositoP = new OracleParameter()
+            {
+                DbType = System.Data.DbType.String,
+                ParameterName = ":regiAzon",
+                Direction = System.Data.ParameterDirection.Input,
+                Value = regiAzon
+            };
+            command.Parameters.Add(regiAzonositoP);
+
+            command.ExecuteNonQuery();
+            command.Connection.Close();
+        }
 
         public void Insert(Varazs record)
         {
@@ -154,45 +239,7 @@ namespace YuGiOhCardLister.Models.Manager
         }
 
 
-        public bool CheckAzonosito(string azonosito)
-        {
-            OracleCommand command = new OracleCommand();
-            command.Connection = openConnection();
-            command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.CommandText = "sf_check_varazs_azonosito";
-
-
-            OracleParameter correct = new OracleParameter()
-            {
-                DbType = System.Data.DbType.Int32,
-                Direction = System.Data.ParameterDirection.ReturnValue
-            };
-
-            OracleParameter azonositoP = new OracleParameter()
-            {
-                DbType = System.Data.DbType.String,
-                ParameterName = "p_azonosito",
-                Direction = System.Data.ParameterDirection.Input,
-                Value = azonosito
-
-            };
-            command.Parameters.Add(azonositoP);
-
-            
-
-            try
-            {
-                int succesful = int.Parse(correct.Value.ToString());
-                command.Connection.Close();
-                return succesful != 0;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-
-
-        }
+        
 
     }
 }
